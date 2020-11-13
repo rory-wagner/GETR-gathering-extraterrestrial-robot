@@ -4,16 +4,100 @@
             "ID": 0,
             "name":"Nothing",
             "mapRep": "",
+            "color": "White",
             "validActions":[]
         },
         {
             "ID": 1,
             "name":"Ship",
             "mapRep": "Ship",
+            "color": "White",
             "validActions": []
         },
         {
-
+            "ID": 2,
+            "name":"Control Seat",
+            "mapRep": "Ctrl",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 3,
+            "name":"Generator",
+            "mapRep": "Gen",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 4,
+            "name":"Propellant Tank",
+            "mapRep": "Tank",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 5,
+            "name":"Cargo",
+            "mapRep": "Crgo",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 6,
+            "name":"Gold",
+            "mapRep": "Au",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 7,
+            "name":"Silver",
+            "mapRep": "Ag",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 8,
+            "name":"Carbon",
+            "mapRep": "C",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 9,
+            "name":"Ice",
+            "mapRep": "Ice",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 10,
+            "name":"Abandoned ship",
+            "mapRep": "Wrck",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 11,
+            "name":"Titanium",
+            "mapRep": "Ti",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 12,
+            "name":"Iron",
+            "mapRep": "Fe",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 13,
+            "name":"Battery",
+            "mapRep": "Batt",
+            "color": "White",
+            "validActions": []
         }
+
     ]   
 }

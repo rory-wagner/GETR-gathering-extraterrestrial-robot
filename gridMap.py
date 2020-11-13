@@ -1,5 +1,6 @@
 from stringcolor import * 
 import robot
+import jsonHandler
  
 class GridMap:
 
@@ -7,9 +8,8 @@ class GridMap:
         self.width = width
         self.height = height
         self.map = self.createMapArray()
-        self.visited = self.createMapArray()
-        self.populateMap()
-
+        self.visitedMap = self.createVisitedMapArray()
+        
     def createMapArray(self):
         prepList = []
         for i in range(self.width):
@@ -17,6 +17,13 @@ class GridMap:
             prepList.append(holdList)
         return prepList
     
+    def createVisitedMapArray(self):
+        prepList = []
+        for i in range(self.width):
+            holdList = [False] * self.height
+            prepList.append(holdList)
+        return prepList
+
     def populateMap(self):
         # This will place all of the materials and encounters on the map
         return
@@ -86,7 +93,7 @@ class GridMap:
         blankLineBuffer.append(Vline)
         for i in range(self.width):
             id = self.getLocationID(i, y)
-            rep = self.getMapRep(id)
+            rep = self.getMapRep(id, i, y)
 
             if self.robotIn(robot, i, y):
                 totalspaces = 8 - len(rep) - 1
@@ -121,7 +128,7 @@ class GridMap:
         finalLine = finalBlankLine + "\n" + finalMainLine + "\n" + finalBlankLine
         return finalLine
 
-    def robotIn(robot, x, y):
+    def robotIn(self, robot, x, y):
         if(robot.getX() == x) and (robot.getY() == y):
             return True
         else:
@@ -163,11 +170,22 @@ class GridMap:
             finalLine += item
         return finalLine
 
-    def getMapRep(self, id):
+    def getMapRep(self, id, x, y):
         # goes to map data looks at id
-        # if visited return blank string
+        # if not visited return blank string
         # else return the string of the representation
-        return ""
+        if self.checkVisited(x, y):
+            data = jsonHandler.getDataFromFile("mapData.json")
+            return data["ids"][id]["mapRep"]
+        else:
+            return ""
+
+    def checkVisited(self, x, y):
+        # checks if location is visited, returns bool
+        if self.visitedMap[x][y] == True:
+            return True
+        else:
+            return False
 
     def getColor(self, robot):
         # gets the location of the robot and looks up
@@ -177,16 +195,23 @@ class GridMap:
     def isValidMove(self, robot, action):
         # receives a robot object and action as lowercase string
         # returns bool
-        return
+        contentsId = self.getLocationID(robot.getX, robot.getY)
+        data = jsonHandler.getDataFromFile("mapData.json")
+        actions = data["ids"][contentsId]["validActions"]
+        if action in actions:
+            return True
+        else:
+            return False
 
     def getValidOptions(self, robot):
         # receives a robot object
         # return a list of strings representing valid actions
-        return
+        contentsId = self.getLocationID(robot.getX, robot.getY)
+        data = jsonHandler.getDataFromFile("mapData.json")
+        return data["ids"][contentsId]["validActions"]
 
     def getLocationID(self, x, y):
         # receives a location
         # returns the int of the id that exists at location
-        return
-    
-m = map(11,11)
+        return self.map[x][y]
+
