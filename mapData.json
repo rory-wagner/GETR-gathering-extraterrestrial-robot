@@ -11,10 +11,36 @@
             "ID": 1,
             "name":"Ship",
             "mapRep": "Ship",
+            "color": "White",
             "validActions": []
         },
         {
-
+            "ID": 2,
+            "name":"Control Seat",
+            "mapRep": "Ctrl",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 3,
+            "name":"Generator",
+            "mapRep": "Gen",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 4,
+            "name":"Propellant Tank",
+            "mapRep": "Tank",
+            "color": "White",
+            "validActions": []
+        },
+        {
+            "ID": 5,
+            "name":"Cargo",
+            "mapRep": "Crgo",
+            "color": "White",
+            "validActions": []
         }
     ]   
 }

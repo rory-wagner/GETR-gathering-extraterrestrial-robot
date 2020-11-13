@@ -1,5 +1,5 @@
 {
-    "locations": {
+    "locationList": {
         "Earth":{
             "name" : "Earth",
             "color": "",
@@ -9,5 +9,8 @@
                 "Au": 0
             }
         }
-    }
+    },
+    "allLocations": [
+        "Earth"
+    ]
 }
