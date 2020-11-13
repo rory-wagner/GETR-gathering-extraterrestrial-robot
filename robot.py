@@ -1,6 +1,4 @@
 import jsonHandler
-import ship
-import sector
 
 class BadInputException(Exception):
     pass
