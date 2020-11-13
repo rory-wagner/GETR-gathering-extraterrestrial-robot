@@ -1,6 +1,7 @@
 from stringcolor import * 
+import robot
  
-class map:
+class GridMap:
 
     def __init__ (self, width, height):
         self.width = width
@@ -8,7 +9,6 @@ class map:
         self.map = self.createMapArray()
         self.visited = self.createMapArray()
         self.populateMap()
-        self.display()
 
     def createMapArray(self):
         prepList = []
@@ -21,7 +21,7 @@ class map:
         # This will place all of the materials and encounters on the map
         return
     
-    def display(self):
+    def display(self, robot):
         cross = u'\u253C'
         HLine = u'\u2500'
         Vline = u'\u2502'
@@ -37,21 +37,24 @@ class map:
             cross, HLine, Vline, DownT, LeftT,
             RightT, UpT, TLCor, TRCor, BLCor, BRCor
         ]
-        lines = self.prepLines()
+        lines = self.prepLines(robot)
         something = ""
         color = self.getColor(something)
         for line in lines:
             print(cs(line, color))
 
-    def prepLines(self):
+    def prepLines(self, robot):
         buffer = []
         buffer.append(self.createTopLine())
         for i in range(self.height):
-            buffer.append(self.createMidLines(i))
+
+            buffer.append(self.createMidLines(robot, i))
+
             if i == self.height - 1:
                 buffer.append(self.createBotLine())
             else:
                 buffer.append(self.createSepLine())
+
         return buffer
     
     def createTopLine(self):
@@ -63,16 +66,19 @@ class map:
         linebuffer.append(TLCor)
         for i in range(self.width):
             linebuffer.append(HLine + HLine + HLine + HLine + HLine + HLine + HLine)
+
             if i == self.width - 1:
                 linebuffer.append(TRCor)
             else:
                 linebuffer.append(DownT)
+
         finalLine = ""
         for item in linebuffer:
             finalLine += item
+
         return finalLine
 
-    def createMidLines(self, y):
+    def createMidLines(self, robot, y):
         Vline = u'\u2502'
         mainLineBuffer = []
         blankLineBuffer = []
@@ -81,18 +87,27 @@ class map:
         for i in range(self.width):
             id = self.getLocationID(i, y)
             rep = self.getMapRep(id)
-            totalspaces = 8 - len(rep)
+
+            if self.robotIn(robot, i, y):
+                totalspaces = 8 - len(rep) - 1
+                rep += "*"
+            else:
+                totalspaces = 8 - len(rep)
+
             if totalspaces % 2 == 0:
                 prespaces = totalspaces / 2
                 postspaces = totalspaces / 2 - 1
             else:
                 prespaces = totalspaces / 2
                 postspaces = prespaces
+
             for j in range(int(prespaces)):
                 mainLineBuffer.append(" ")
             mainLineBuffer.append(rep)
+
             for j in range(int(postspaces)):
                 mainLineBuffer.append(" ")
+
             mainLineBuffer.append(Vline)
             blankLineBuffer.append("       ")
             blankLineBuffer.append(Vline)
@@ -105,6 +120,12 @@ class map:
         #This combines all the 3 lines into one string to send to the buffer
         finalLine = finalBlankLine + "\n" + finalMainLine + "\n" + finalBlankLine
         return finalLine
+
+    def robotIn(robot, x, y):
+        if(robot.getX() == x) and (robot.getY() == y):
+            return True
+        else:
+            return False
 
     def createSepLine(self):
         cross = u'\u253C'
@@ -168,4 +189,4 @@ class map:
         # returns the int of the id that exists at location
         return
     
-m = map(2,2)
+m = map(11,11)
