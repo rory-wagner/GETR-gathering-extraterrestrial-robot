@@ -1,0 +1,7 @@
+[
+    {
+        "messageToUser": "Some handsome bandits have appeared!\nThey demand you pay (variable amount here) bytecoins.\nThey look like they could be scared off.\n1) Shocker\n2) Pay\n3) Run",
+        "allowedOptions": [1, 2, 3],
+        "optionsSelect": ["z", "p", "r"]
+    }
+]
