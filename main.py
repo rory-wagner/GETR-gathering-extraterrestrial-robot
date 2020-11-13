@@ -2,6 +2,7 @@ import robot
 import tutorial
 import jsonHandler
 import string
+import gridMap
 
 def getValidActionFromUser(GETR, placeToCheckValidity):
     while True:
@@ -33,6 +34,7 @@ def moveRight(GETR, currentMap):
     GETR.setX(x)
 
 def doAction(GETR, currentMap, action):
+    print("doing Action")
     allActions = {
         "w": moveUp,
         "a": moveLeft,
@@ -62,8 +64,22 @@ def enterTutorial():
 
 def main():
     GETR = robot.Robot()
-    # personalShip = ship.Ship()
-    # currentSector = sector.Sector()
-    enterTutorial(GETR, personalShip, currentSector)
-    mainLoop(GETR, personalShip, currentSector)
+    personalShip = ship.Ship()
+    currentSector = sector.Sector()
 
+    # print a beginning to the tutorial
+    enterTutorial(GETR, personalShip, currentSector)
+
+    #print a beginning to the real game
+    mainLoop(GETR, personalShip, currentSector)
+    return
+
+#testing for now:
+
+def test():
+    GETR = robot.Robot()
+    ourMap = gridMap.GridMap(10, 10)
+    mainLoop(GETR, ourMap, ourMap)
+    return
+
+test()
