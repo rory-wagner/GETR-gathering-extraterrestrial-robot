@@ -9,8 +9,7 @@ class GridMap:
         self.height = height
         self.map = self.createMapArray()
         self.visitedMap = self.createVisitedMapArray()
-        self.populateMap()
-
+        
     def createMapArray(self):
         prepList = []
         for i in range(self.width):
@@ -215,7 +214,3 @@ class GridMap:
         # receives a location
         # returns the int of the id that exists at location
         return self.map[x][y]
-
-        
-    
-m = map(11,11)
