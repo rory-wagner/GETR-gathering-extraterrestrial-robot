@@ -1,0 +1,19 @@
+{
+    "ids":[
+        {
+            "ID": 0,
+            "name":"Nothing",
+            "mapRep": "",
+            "validActions":[]
+        },
+        {
+            "ID": 1,
+            "name":"Ship",
+            "mapRep": "Ship",
+            "validActions": []
+        },
+        {
+
+        }
+    ]   
+}
