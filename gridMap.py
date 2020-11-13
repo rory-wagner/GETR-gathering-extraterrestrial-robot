@@ -214,3 +214,4 @@ class GridMap:
         # receives a location
         # returns the int of the id that exists at location
         return self.map[x][y]
+
