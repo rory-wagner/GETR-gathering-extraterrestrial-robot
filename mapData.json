@@ -4,6 +4,7 @@
             "ID": 0,
             "name":"Nothing",
             "mapRep": "",
+            "color": "White",
             "validActions":[]
         },
         {
