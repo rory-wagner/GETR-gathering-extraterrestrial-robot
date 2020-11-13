@@ -81,6 +81,8 @@ class map:
         for i in range(self.width):
             id = self.getLocationID(i, y)
             rep = self.getMapRep(id)
+            if self.robotIn():
+
             totalspaces = 8 - len(rep)
             if totalspaces % 2 == 0:
                 prespaces = totalspaces / 2
@@ -105,6 +107,9 @@ class map:
         #This combines all the 3 lines into one string to send to the buffer
         finalLine = finalBlankLine + "\n" + finalMainLine + "\n" + finalBlankLine
         return finalLine
+
+    def robotIn(x, y):
+        
 
     def createSepLine(self):
         cross = u'\u253C'
@@ -168,4 +173,4 @@ class map:
         # returns the int of the id that exists at location
         return
     
-m = map(2,2)
+m = map(11,11)
