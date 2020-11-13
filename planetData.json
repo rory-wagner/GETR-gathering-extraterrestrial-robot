@@ -1,0 +1,13 @@
+{
+    "locations": {
+        "Earth":{
+            "name" : "Earth",
+            "color": "",
+            "concentration": {
+                "Fe": 80,
+                "C" : 2,
+                "Au": 0
+            }
+        }
+    }
+}
