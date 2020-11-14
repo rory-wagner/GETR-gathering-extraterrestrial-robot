@@ -33,6 +33,10 @@ def moveRight(GETR, currentMap):
     x += 1
     GETR.setX(x)
 
+def interact(GETR, currentMap):
+    #gives back a call-back function
+    userOption = currentMap.interact(GETR)
+
 def doAction(GETR, currentMap, action):
     print("doing Action")
     allActions = {
@@ -40,6 +44,7 @@ def doAction(GETR, currentMap, action):
         "a": moveLeft,
         "s": moveDown,
         "d": moveRight,
+        "e": interact,
     }
     for a in allActions:
         if a == action:

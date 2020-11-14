@@ -19,28 +19,28 @@
             "name":"Control Seat",
             "mapRep": "Ctrl",
             "color": "White",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 3,
             "name":"Generator",
             "mapRep": "Gen",
             "color": "White",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 4,
             "name":"Propellant Tank",
             "mapRep": "Tank",
             "color": "White",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 5,
             "name":"Cargo",
             "mapRep": "Crgo",
             "color": "White",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 6,
@@ -97,6 +97,20 @@
             "mapRep": "Batt",
             "color": "White",
             "validActions": []
+        },
+        {
+            "ID": 14,
+            "name":"Exit Hatch",
+            "mapRep": "Exit",
+            "color": "White",
+            "validActions": ["e"]
+        },
+        {
+            "ID": 15,
+            "name":"Engine",
+            "mapRep": "Eng",
+            "color": "White",
+            "validActions": ["e"]
         }
 
     ]   
