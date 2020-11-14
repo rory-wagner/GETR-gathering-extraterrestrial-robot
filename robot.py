@@ -48,22 +48,29 @@ class Robot:
     def setX(self, currentMap, newX):
         if newX < 0:
             self.x = 0
-            raise BadInputException("Small x value given")
+            currentMap.setVisited(self.getX(), self.getY())
+            raise BadInputException("Small x value given")  
         elif newX == currentMap.getWidth():
             self.x = currentMap.getWidth() - 1
             raise BadInputException("Large x value given")
+            currentMap.setVisited(self.getX(), self.getY())
         else:
             self.x = newX
+            currentMap.setVisited(self.getX(), self.getY())
+
 
     def setY(self, currentMap, newY):
         if newY < 0:
             self.y = 0
+            currentMap.setVisited(self.getX(), self.getY())
             raise BadInputException("Small y value given")
         elif newY == currentMap.getHeight():
             self.y = currentMap.getHeight() - 1
+            currentMap.setVisited(self.getX(), self.getY())
             raise BadInputException("Large y value given")
         else:
             self.y = newY
+            currentMap.setVisited(self.getX(), self.getY())
 
     def setOnPlanet(self, value):
         self.onPlanet = value

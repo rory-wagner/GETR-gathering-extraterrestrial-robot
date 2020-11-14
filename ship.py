@@ -141,3 +141,8 @@ class Ship(gridMap.GridMap):
         print("Engine is running well.")
         return
 
+    def setVisited(self, x, y):
+        #Dummy method, nothing to see here.
+        return
+
+

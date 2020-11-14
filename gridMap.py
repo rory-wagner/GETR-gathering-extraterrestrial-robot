@@ -154,8 +154,12 @@ class GridMap:
             else:
                 print(cs(Vline, planetColor), end="")
 
+    def setVisited(self, x, y):
+        self.visitedMap[x][y] = True
+
     def robotIn(self, robot, x, y):
         if(robot.getX() == x) and (robot.getY() == y):
+            self.setVisited(x, y)
             return True
         else:
             return False
@@ -201,6 +205,7 @@ class GridMap:
         print(cs(finalLine, planetColor))
 
     def getMapRep(self, id, x, y):
+        id = int(id)
         # goes to map data looks at id
         # if not visited return blank string
         # else return the string of the representation
@@ -225,7 +230,7 @@ class GridMap:
     def isValidMove(self, robot, action, extraOptions):
         # receives a robot object and action as lowercase string
         # returns bool
-        contentsId = self.getLocationID(robot.getX(), robot.getY())
+        contentsId = int(self.getLocationID(robot.getX(), robot.getY()))
         data = jsonHandler.getDataFromFile("mapData.json")
         actions = data["ids"][contentsId]["validActions"]
         if robot.getY() < self.height - 1:
