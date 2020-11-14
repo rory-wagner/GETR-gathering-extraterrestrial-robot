@@ -16,7 +16,37 @@ def getValidActionFromUser(GETR, placeToCheckValidity):
         if canDo:
             return userInput
         else:
-            print("Huh? Aww the simple little GETR is trying to communicate. Type 'h' if your not sure what to input.")
+            GETR.incConfusedCounter()
+            TLCor = u'\u250C'
+            TRCor = u'\u2510'
+            BLCor = u'\u2514'
+            BRCor = u'\u2518'
+            HLine = u'\u2500'
+            Vline = u'\u2502'
+            messages = [
+                "Huh? Aww the simple little GETR is trying to communicate. Type 'h' if your not sure what to input.",
+                "Almost there. Just one byte more... Nope. Missed it by half a pixel. FacePalm.exe Initiated ...",
+                "I told you already, type 'h' if you are confused",
+                "I am disappointed GETR. Either your programming is corrupted or your neural network is underdeveloped."
+            ]
+            line = Vline + messages[GETR.getConfusedCounter() % len(messages)] + Vline
+            linelen = len(line)
+
+            topLine = TLCor 
+            for i in range(linelen - 2):
+                topLine += HLine
+            topLine += TRCor
+
+            print(cs(topLine, "SteelBlue"))
+
+            print(cs(line, "SteelBlue"))
+        
+            botLine = BLCor 
+            for i in range(linelen - 2):
+                botLine += HLine
+            botLine += BRCor
+            print(cs(botLine, "SteelBlue"))
+        
 
 def moveUp(GETR, currentMap):
     y = GETR.getY()
@@ -46,6 +76,9 @@ def interact(GETR, currentMap):
     userOption = currentMap.interact(GETR)
     if userOption == "Exit":
         GETR.setOnPlanet(True)
+        GETR.setX(currentMap, 5)
+        GETR.setY(currentMap, 5)
+        currentMap.setVisited(5, 5)
     else:
         return userOption
 
