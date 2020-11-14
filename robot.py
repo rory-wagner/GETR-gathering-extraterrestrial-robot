@@ -15,7 +15,14 @@ class Robot:
         self.currCharge = 50
         self.maxCharge = 50
         self.inventory = self.fillInventory()
+        self.ActiveQuest = None
         return
+
+    def setActiveQuest(self, num):
+        self.ActiveQuest = num
+
+    def getActiveQuest(self):
+        return self.ActiveQuest
 
     def getByteCoins(self):
         return self.byteCoins
