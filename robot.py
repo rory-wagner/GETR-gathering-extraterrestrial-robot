@@ -15,6 +15,7 @@ class Robot:
         self.currCharge = 50
         self.maxCharge = 50
         self.inventory = self.fillInventory()
+        self.ActiveQuest = None
         self.confusedCounter = 0
         return
 
@@ -23,6 +24,12 @@ class Robot:
 
     def getConfusedCounter(self):
         return self.confusedCounter
+
+    def setActiveQuest(self, num):
+        self.ActiveQuest = num
+
+    def getActiveQuest(self):
+        return self.ActiveQuest
 
     def getByteCoins(self):
         return self.byteCoins

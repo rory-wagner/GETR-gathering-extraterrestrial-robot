@@ -29,15 +29,24 @@ class Sector(gridMap.GridMap):
                             self.map[i][j] = concentrationKeys[k]
                             break
     
+    def reenterShip(self, GETR):
+        GETR.setX(self, 2)
+        GETR.setY(self, 1)
+        GETR.setOnPlanet(False)
+        return "reentership"
+
     def interact(self, GETR):
         x = GETR.getX()
         y = GETR.getY()
-        ID = self.getCellID(x, y)
-        data = jsonHandler.getDataFromFile("mapData.json")
-        nameOfMaterial = data["ids"][ID]["name"]
-        amountToAdd = random.randrange(0, 4)
-        GETR.setInventorySlot(nameOfMaterial, amountToAdd)
-        print(str(amountToAdd) + " " + nameOfMaterial + "s obtained!")
-        #empty out the cell:
-        self.setCellID(x, y, 0)
+        if x == 5 and y == 5:
+            return self.reenterShip(GETR)
+        else:
+            ID = self.getCellID(x, y)
+            data = jsonHandler.getDataFromFile("mapData.json")
+            nameOfMaterial = data["ids"][ID]["name"]
+            amountToAdd = random.randrange(0, 4)
+            GETR.setInventorySlot(nameOfMaterial, amountToAdd)
+            print(str(amountToAdd) + " " + nameOfMaterial + "s obtained!")
+            #empty out the cell:
+            self.setCellID(x, y, 0)
         return
