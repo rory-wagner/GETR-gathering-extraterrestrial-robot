@@ -178,6 +178,7 @@ class Ship(gridMap.GridMap):
     def CargoInteract(self, GETR):
         #Let them choose to place things in or take things out of cargo
         # then act accordingly
+        print("Cargo is full of tools.")
         return
 
     def ExitInteract(self, GETR):

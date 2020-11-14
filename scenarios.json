@@ -1,18 +1,18 @@
 [
     {
-        "messageToUser": "Some handsome bandits have appeared!\nThey demand you pay %s bytecoins.\nThey look like they could be scared off.\nz) Shocker - Show those bandits whose boss!\np) Pay - You have no other choice.\nr) Run - Outrun those fools!",
+        "messageToUser": "Some handsome bandits have appeared!\nThey demand you pay 20 bytecoins.\nThey look like they could be scared off.\nz) Shocker - Show those bandits whose boss!\np) Pay - You have no other choice.\nr) Run - Outrun those fools!",
         "optionsSelect": ["z", "p", "r"],
-        "successRates": [40, 100, 20],
+        "successRates": [40, 0, 20],
         "moneyRewardOrLoss": 20,
-        "successMessages": ["After firing a few warning shots with your shocker, the bandits run away and drop their own %s bytecoins!", "You gave the money to the bandits and they left triumphant.", "You fled the scene before the bandits could catch you."],
-        "failureMessages": ["The bandits break your shocker with a quick shot from their shotgun.", "Error- should not fail to pay", "After being caught again by the bandits, you pay double the money."]
+        "successMessages": ["After firing a few warning shots with your shocker, the bandits run away and drop their own 20 bytecoins!", "Error- should not fail to pay", "You fled the scene before the bandits could catch you."],
+        "failureMessages": ["The bandits break your spirits with a quick shot from their shotgun and take the money anyway.", "You gave the money to the bandits and they left triumphant.", "After being caught again by the bandits, you pay the money."]
     },
     {
-        "messageToUser": "A human slave is being attacked by a slug monster!\nHe says he will pay you %s if you help him.\nSlugs are susceptible to a good shock.\nz) Shocker - Take that you slug monster!\nr) Ignore - Mind your own business and try not to also be eaten.",
+        "messageToUser": "A human slave is being attacked by a slug monster!\nHe says he will pay you 10 if you help him.\nSlugs are susceptible to a good shock.\nz) Shocker - Take that you slug monster!\nr) Ignore - Mind your own business and try not to also be eaten.",
         "optionsSelect": ["z", "r"],
         "successRates": [50, 100],
         "moneyRewardOrLoss": 10,
-        "successMessages": ["Once you shock the slug monster a couple times, it goes limp. You gain %s bytecoins!", "You walk away from the poor human being devoured."],
-        "failureMessages": ["After shocking the slug, it gets angry and destroys your shocker", "Should not fail - Error"]
+        "successMessages": ["Once you shock the slug monster a couple times, it goes limp. You gain 10 bytecoins!", "You walk away from the poor human being devoured."],
+        "failureMessages": ["After shocking the slug, it gobbles up the human and slumps away.", "Should not fail - Error"]
     }
 ]

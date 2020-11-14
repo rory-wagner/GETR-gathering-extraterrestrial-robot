@@ -12,7 +12,7 @@ def printMessageToUser(currScenario):
 
 def getValidOption(GETR, currScenario):
     while True:
-        userInput = inputConsole.getInput().lower()
+        userInput = inputConsole.getInput()
         if userInput in currScenario["optionsSelect"]:
             return userInput
         else:
@@ -26,6 +26,34 @@ def usePay(GETR, currSector):
     return
 def useRun(GETR, currSector):
     return
+
+def checkSuccessOrFailure(GETR, currSector, currScenario, userOption):
+    successRate = 0
+    theIndex = None
+    for i in range(len(currScenario["optionsSelect"])):
+        if currScenario["optionsSelect"][i] == userOption:
+            successRate = currScenario["successRates"][i]
+            theIndex = i
+    roll = random.randrange(0, 100)
+    if roll <= successRate:
+        #success
+        if userOption != "r":
+            GETR.setByteCoins(GETR.getByteCoins() + currScenario["moneyRewardOrLoss"])
+            print(currScenario["successMessages"][theIndex])
+            print("Total bytecoins: " + str(GETR.getByteCoins()))
+        else:
+            #if they run, don't gain money
+            print(currScenario["successMessages"][theIndex])
+            # GETR.setByteCoins(GETR.getByteCoins() + currScenario["moneyRewardOrLoss"])
+            # print(GETR.getByteCoins())
+    else:
+        #failure
+        try:
+            GETR.setByteCoins(GETR.getByteCoins() - currScenario["moneyRewardOrLoss"])
+        except:
+            GETR.setByteCoins(0)
+        print(currScenario["failureMessages"][theIndex])
+        print("Total bytecoins: " + str(GETR.getByteCoins()))
 
 #the organization of data in scenarios.json is as follows:
 # [
@@ -46,16 +74,7 @@ def performRandomScenario(GETR, currSector):
     printMessageToUser(currScenario)
     userOption = getValidOption(GETR, currScenario)
 
-    userSuccess = checkSuccessOrFailure(GETR, currSector, currScenario, userOption)
-
-    allOptions = {
-        "z": useShocker,
-        "p": usePay,
-        "r": useRun
-    }
-    for opt in allOptions:
-        if opt == userOption:
-            allOptions[opt](GETR, currSector)
+    checkSuccessOrFailure(GETR, currSector, currScenario, userOption)
     
     return
 
