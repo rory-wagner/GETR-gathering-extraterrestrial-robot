@@ -22,15 +22,18 @@ def moveUp(GETR, currentMap):
     y -= 1
     GETR.setY(currentMap, y)
 
+
 def moveLeft(GETR, currentMap):
     x = GETR.getX()
     x -= 1
     GETR.setX(currentMap, x)
 
+
 def moveDown(GETR, currentMap):
     y = GETR.getY()
     y += 1
     GETR.setY(currentMap, y)
+
 
 def moveRight(GETR, currentMap):
     x = GETR.getX()
@@ -46,6 +49,7 @@ def interact(GETR, currentMap):
         return userOption
 
 def displayMap(GETR, currentMap):
+    currentMap.setVisited(GETR.getX(), GETR.getY())
     currentMap.display(GETR)
     return
 
