@@ -11,9 +11,44 @@ def getShop():
     return DictOfNameAndCost
 
 def displayAndGetShop(GETR):
+    TLCor = u'\u250C'
+    TRCor = u'\u2510'
+    BLCor = u'\u2514'
+    BRCor = u'\u2518'
+    HLine = u'\u2500'
+    Vline = u'\u2502'
+    RightT= u'\u2524'
+    LeftT = u'\u251C'
+
+    Top = TLCor
+    for i in range(16):
+        Top += HLine
+    Top += TRCor
+    print(cs(Top, "SeaGreen4"))
+
+    print(cs(Vline+"      BUY      "+Vline, "SeaGreen4"))
+
+
+    Bot = LeftT
+    for i in range(16): 
+        Bot += HLine
+    Bot += RightT
+    print(cs(Bot, "SeaGreen4"))
+
     DictOfNameAndCost = getShop()
     for key in DictOfNameAndCost:
-        print("%s) " % key + str(DictOfNameAndCost[key]))
+        message =  "%s) " % key + str(DictOfNameAndCost[key])
+        messagelen = len(message)
+        for i in range(16 - messagelen):
+            message += " "
+        print(cs(Vline + message + Vline, "SeaGreen4"))
+
+    End = BLCor
+    for i in range(16): 
+        End += HLine
+    End += BRCor
+    print(cs(End, "SeaGreen4"))
+
     return DictOfNameAndCost
 
 def askHowMany():
@@ -70,7 +105,7 @@ def handleBuy(GETR):
         print(cs(Bot, "Gold2"))
         shopItemNamesAndCost = displayAndGetShop(GETR)
         #printQuit option:
-        print("q) Quit")
+        print(cs("q) Quit", "IndianRed2"))
         userInput = inputConsole.getInput().title()
         if userInput in shopItemNamesAndCost:
             howMany = int(askHowMany())
@@ -93,17 +128,53 @@ def handleBuy(GETR):
             print(cs("===============================", "Red"))
 
 def printAndGetCurrentInventoryAndShop(GETR):
+    TLCor = u'\u250C'
+    TRCor = u'\u2510'
+    BLCor = u'\u2514'
+    BRCor = u'\u2518'
+    HLine = u'\u2500'
+    Vline = u'\u2502'
+    RightT= u'\u2524'
+    LeftT = u'\u251C'
+
+    Top = TLCor
+    for i in range(16):
+        Top += HLine
+    Top += TRCor
+    print(cs(Top, "SeaGreen4"))
+
+    print(cs(Vline+"      SELL      "+Vline, "SeaGreen4"))
+
+    Bot = LeftT
+    for i in range(16): 
+        Bot += HLine
+    Bot += RightT
+    print(cs(Bot, "SeaGreen4"))
+
     shopItemNamesAndCost = getShop()
     inventory = GETR.getInventory()
     for key in inventory:
-        print("%s) " % key + str(inventory[key]))
+        message =  "%s) " % key + str(inventory[key])
+        messagelen = len(message)
+        for i in range(16 - messagelen):
+            message += " "
+        print(cs(Vline + message + Vline, "SeaGreen4"))
+
+    End = BLCor
+    for i in range(16): 
+        End += HLine
+    End += BRCor
+    print(cs(End, "SeaGreen4"))
+
     return inventory, shopItemNamesAndCost
+
+
 
 def handleSell(GETR):
     while True:
         currentInventoryNamesAndCount, shopItemNamesAndCost = printAndGetCurrentInventoryAndShop(GETR)
         #printQuit option:
-        print("q) Quit")
+        print(cs("q) Quit", "IndianRed2"))
         userInput = inputConsole.getInput().title()
         if userInput in shopItemNamesAndCost:
             howMany = int(askHowMany())
@@ -125,10 +196,41 @@ def handleSell(GETR):
             print(cs("Please enter full name of item", "Red"))
 
 def printShopOptions():
-    print("Would you like to:")
-    print("b) Buy")
-    print("s) Sell")
-    print("q) Quit")
+    TLCor = u'\u250C'
+    TRCor = u'\u2510'
+    BLCor = u'\u2514'
+    BRCor = u'\u2518'
+    HLine = u'\u2500'
+    Vline = u'\u2502'
+    RightT= u'\u2524'
+    LeftT = u'\u251C'
+
+    Top = TLCor
+    for i in range(25):
+        Top += HLine
+    Top += TRCor
+    
+    print(cs(Top, "SeaGreen4"))
+    print(cs(Vline +"Would you like to:" + "       "+ Vline, "SeaGreen4"))
+    Bot = LeftT
+    for i in range(25): 
+        Bot += HLine
+    Bot += RightT
+
+    print(cs(Bot, "SeaGreen4"))
+
+    print(cs(Vline + "b) Buy" + "\t\t\t  " + Vline, "SeaGreen4"))
+    print(cs(Vline + "s) Sell" + "\t\t  " + Vline, "SeaGreen4"))
+    print(cs(Vline + "q) Quit" + "\t\t  " + Vline, "SeaGreen4"))
+
+
+    End = BLCor
+    for i in range(25): 
+        End += HLine
+    End += BRCor
+    print(cs(End, "SeaGreen4"))
+
+
 
 def openShop(GETR):
     printShopOptions()

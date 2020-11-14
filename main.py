@@ -6,6 +6,7 @@ import string
 import ship
 import sector
 import inputConsole
+import tutorial
 from stringcolor import *
 
 def getValidActionFromUser(GETR, placeToCheckValidity):
@@ -175,6 +176,7 @@ def mainLoop(GETR, personalShip, currentSector):
     return
 
 def enterTutorial():
+    tutorial.begin()
     return
 
 def main():
@@ -184,7 +186,7 @@ def main():
     currentSector = sector.Sector(11, 11, "Earth")
 
     # print a beginning to the tutorial
-    # enterTutorial(GETR, personalShip, currentSector)
+    # enterTutorial()
 
     #print a beginning to the real game
     mainLoop(GETR, personalShip, currentSector)
