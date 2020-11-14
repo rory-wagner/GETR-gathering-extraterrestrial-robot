@@ -15,7 +15,17 @@ class Sector(gridMap.GridMap):
         concentrations = data["locationList"][planet][concentration]
         for i in range(self.width):
             for j in range(self.height):
+                concentrationList = []
+                concentrationKeys = []
                 for key in concentrations:
-                    if random.randrange(0, 100) <= concentrations[key]:
-                        self.map[i][j] = key
+                    if len(concentrationList) == 0:
+                        concentrationList.append(concentrations[key])
+                    else:
+                        concentrationList.append(concentrationList[len(concentrationList) - 1] + concentrations[key])
+                    concentrationKeys.append(key)
+                randomNum = random.randrange(0, 100)
+                for k in range(len(concentrationList)):
+                    if randomNum <= concentrationList[k]:
+                        self.map[i][j] = concentrationKeys[k]
                         break
+

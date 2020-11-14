@@ -14,7 +14,7 @@
             }
         },
         "Moon":{
-            "name" : "",
+            "name" : "Moon",
             "color": "",
             "concentration": {
                 "6" : 10,

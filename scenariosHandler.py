@@ -2,6 +2,7 @@ import jsonHandler
 import random
 import sector
 import robot
+import inputConsole
 
 def getScenarioNum(allScenarios):
     return random.randrange(0, len(allScenarios))
@@ -11,7 +12,7 @@ def printMessageToUser(currScenario):
 
 def getValidOption(GETR, currScenario):
     while True:
-        userInput = input("->").lower()
+        userInput = inputConsole.getInput().lower()
         if userInput in currScenario["optionsSelect"]:
             return userInput
         else:
