@@ -3,12 +3,13 @@ import random
 import sector
 import robot
 import inputConsole
+from stringcolor import *
 
 def getScenarioNum(allScenarios):
     return random.randrange(0, len(allScenarios))
 
 def printMessageToUser(currScenario):
-    print(currScenario["messageToUser"])
+    print(cs(currScenario["messageToUser"], "DodgerBlue2"))
 
 def getValidOption(GETR, currScenario):
     while True:
@@ -16,9 +17,9 @@ def getValidOption(GETR, currScenario):
         if userInput in currScenario["optionsSelect"]:
             return userInput
         else:
-            print("Please type in a valid option.")
+            print(cs("Please type in a valid option.", "Red"))
             for opt in currScenario["optionsSelect"]:
-                print(opt)
+                print(cs(opt, "DodgerBlue"))
 
 def useShocker(GETR, currSector):
     return
@@ -39,8 +40,8 @@ def checkSuccessOrFailure(GETR, currSector, currScenario, userOption):
         #success
         if userOption != "r":
             GETR.setByteCoins(GETR.getByteCoins() + currScenario["moneyRewardOrLoss"])
-            print(currScenario["successMessages"][theIndex])
-            print("Total bytecoins: " + str(GETR.getByteCoins()))
+            print(cs(currScenario["successMessages"][theIndex], "SpringGreen6"))
+            print(cs("Total Bytecoins: " + str(GETR.getByteCoins()), "Gold2"))
         else:
             #if they run, don't gain money
             print(currScenario["successMessages"][theIndex])
@@ -52,8 +53,8 @@ def checkSuccessOrFailure(GETR, currSector, currScenario, userOption):
             GETR.setByteCoins(GETR.getByteCoins() - currScenario["moneyRewardOrLoss"])
         except:
             GETR.setByteCoins(0)
-        print(currScenario["failureMessages"][theIndex])
-        print("Total bytecoins: " + str(GETR.getByteCoins()))
+        print(cs(currScenario["failureMessages"][theIndex], "IndianRed"))
+        print(cs("Total Bytecoins: " + str(GETR.getByteCoins()), "Gold2"))
 
 #the organization of data in scenarios.json is as follows:
 # [
