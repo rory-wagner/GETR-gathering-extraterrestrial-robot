@@ -7,12 +7,12 @@ class Sector(gridMap.GridMap):
         gridMap.GridMap.__init__(self, 11, 11)
         self.planet = planet
         self.map[6][6] = 1
-        self.generateMap(self.planet)
+        self.generateMap(planet)
 
 
     def generateMap(self, planet):
         data = jsonHandler.getDataFromFile("planetData.json")
-        concentrations = data["locationList"][planet][concentration]
+        concentrations = data["locationList"][planet]["concentration"]
         for i in range(self.width):
             for j in range(self.height):
                 concentrationList = []

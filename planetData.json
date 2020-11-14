@@ -20,9 +20,16 @@
                 "6" : 10,
                 "10" : 1
             }
+        },
+        "Shop":{
+            "name" : "Shop",
+            "color": "",
+            "concentration": {
+                
+            }
         }
     },
     "allLocations": [
-        "Earth", "Moon"
+        "Earth", "Moon", "Shop"
     ]
 }
