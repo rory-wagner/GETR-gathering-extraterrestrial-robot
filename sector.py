@@ -4,7 +4,7 @@ import random
 
 class Sector(gridMap.GridMap):
     def __init__(self, width, height, planet):
-        gridMap.GridMap.__init__(self, 11, 11)
+        gridMap.GridMap.__init__(self, width, height)
         self.planet = planet
         self.map[5][5] = 1
         self.generateMap(planet)
@@ -28,4 +28,16 @@ class Sector(gridMap.GridMap):
                         if randomNum <= concentrationList[k]:
                             self.map[i][j] = concentrationKeys[k]
                             break
-
+    
+    def interact(self, GETR):
+        x = GETR.getX()
+        y = GETR.getY()
+        ID = self.getCellID(x, y)
+        data = jsonHandler.getDataFromFile("mapData.json")
+        nameOfMaterial = data["ids"][ID]["name"]
+        amountToAdd = random.randrange(0, 4)
+        GETR.setInventorySlot(nameOfMaterial, amountToAdd)
+        print(str(amountToAdd) + " " + nameOfMaterial + "s obtained!")
+        #empty out the cell:
+        self.setCellID(x, y, 0)
+        return
