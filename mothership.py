@@ -14,7 +14,7 @@ def getValueOfMaterial(material):
 def handleGetQuest(GETR):
     data = jsonHandler.getDataFromFile("quests.json")
     ID = random.randrange(0, len(data))
-    if ID != None:
+    if GETR.getActiveQuest() != None:
         print("You already have an Active Quest")
         return
     GETR.setActiveQuest(ID)
@@ -23,7 +23,7 @@ def handleGetQuest(GETR):
 
 def handleFinishQuest(GETR):
     ID = GETR.getActiveQuest()
-    if ID == None:
+    if GETR.getActiveQuest() == None:
         print("You do not have an Active Quest.")
         return
     data = jsonHandler.getDataFromFile("quests.json")
