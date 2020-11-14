@@ -9,7 +9,8 @@ class GridMap:
         self.height = height
         self.map = self.createMapArray()
         self.visitedMap = self.createVisitedMapArray()
-        
+        self.planet = "Default"
+
     def createMapArray(self):
         prepList = []
         for i in range(self.width):
@@ -45,10 +46,32 @@ class GridMap:
             RightT, UpT, TLCor, TRCor, BLCor, BRCor
         ]
         lines = self.prepLines(robot)
-        something = ""
-        color = self.getColor(something)
+        self.colorizeAndPrint(lines)
+        
+    def colorizeAndPrint(self, lines):
+        data = jsonHandler.getDataFromFile("planetData.json")
+        color = data["locationList"][self.planet]["color"]
         for line in lines:
-            print(cs(line, color))
+            if ((line[0] == u'\u250C') or (line[0] == u'\u2514') or (line[0] == u'\u251C')):
+                print(cs(line, color))
+            else:
+                holdstring = ""
+                for char in line:
+                    if (line[char] == u'\u2502'):
+                        print(cs(line[char], color), sep="")
+                    elif (line[char] == " "):
+                        print(line[char])
+                        if holdstring != "":
+                            data = jsonHandler.getDataFromFile("mapData.json")
+                            checkList = data["ids"]
+                            color = ""
+                            for key in checkList:
+                                if checkList[key]["mapRep"] == holdstring or checkList[key]["mapRep"] == holdstring[:-1]:
+                                    color = checkList[key]["color"]
+                            print(cs(holdstring, color))
+                            holdstring = ""
+                    else:
+                        holdstring += line[char]
 
     def prepLines(self, robot):
         buffer = []
@@ -190,7 +213,7 @@ class GridMap:
     def getColor(self, robot):
         # gets the location of the robot and looks up
         # the color that is set for the planet
-        return "White"
+        return color
 
     def isValidMove(self, robot, action):
         # receives a robot object and action as lowercase string
