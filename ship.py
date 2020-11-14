@@ -8,16 +8,20 @@ def printAllLocations(listOfStrings):
 
 def makeValidList(allPlanets):
     finalList = []
-    for key in allPlanets["locationList"]:
-        finalList.append(allPlanets["locationList"][key]["planetKey"])
+    for i in range(len(allPlanets["allLocations"])):
+        finalList.append(i)
     return finalList
 
 def getUserInput():
     while True:
-        userInput = input("->").lower()
-        if userInput in validList:
-            return userInput
-        else:
+        userInput = input("->")
+        try:
+            userInput = int(userInput)
+            if userInput in validList:
+                return userInput
+            else:
+                raise Exception
+        except:
             print("Please use a valid location")
 
 
@@ -106,20 +110,24 @@ class Ship(gridMap.GridMap):
         validList = makeValidList(allPlanets)
 
         userInput = getUserInput(validList)
-        return
+        userSelectedPlace = allPlanets["allLocations"][userInput]
+        return userSelectedPlace
 
     def GeneratorInteract(self, GETR):
         print("Generator is running well.")
         return
     
     def PropellantTankInteract(self, GETR):
+        #check if they have and want to use a propellant tank to fuel the ship
         return
 
     def CargoInteract(self, GETR):
+        #Let them choose to place things in or take things out of cargo
+        # then act accordingly
         return
 
     def ExitInteract(self, GETR):
-        return
+        return "Exit"
 
     def EngineInteract(self, GETR):
         print("Engine is running well.")
