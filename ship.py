@@ -2,6 +2,7 @@ import gridMap
 import jsonHandler
 import robot
 import inputConsole
+import shop
 
 def printAllLocations(listOfStrings):
     for i in range(len(listOfStrings)):
@@ -24,17 +25,6 @@ def getUserInput(validList):
                 raise Exception
         except:
             print("Please use a valid integer for location")
-
-def openShop(GETR):
-    print("opened shop")
-    return
-
-
-#callback Functions:
-
-def emptyFunction():
-    return
-
 
 class Ship(gridMap.GridMap):
     def __init__(self):
@@ -117,7 +107,7 @@ class Ship(gridMap.GridMap):
         userInput = getUserInput(validList)
         userSelectedPlace = allPlanets["allLocations"][userInput]
         if userSelectedPlace == "Shop":
-            openShop(GETR)
+            shop.openShop(GETR)
         return userSelectedPlace
 
     def GeneratorInteract(self, GETR):
