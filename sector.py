@@ -28,4 +28,5 @@ class Sector(gridMap.GridMap):
                         if randomNum <= concentrationList[k]:
                             self.map[i][j] = concentrationKeys[k]
                             break
-
+    
+    
