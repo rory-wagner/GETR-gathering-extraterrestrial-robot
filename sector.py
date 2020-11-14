@@ -58,7 +58,5 @@ class Sector(gridMap.GridMap):
         x = GETR.getX()
         y = GETR.getY()
         if self.getCellID(x, y) == 0:
-            print(x)
-            print(y)
             if random.randrange(0,100) < 100:
                 scenariosHandler.performRandomScenario(GETR, self)
