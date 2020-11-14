@@ -4,13 +4,21 @@
             "name" : "Earth",
             "color": "",
             "concentration": {
-                "Fe": 80,
-                "C" : 2,
-                "Au": 0
+                "8"     : 30,
+                "9"     : 20,
+                "12"    : 25
+            }
+        },
+        "Moon":{
+            "name" : "",
+            "color": "",
+            "concentration": {
+                "6" : 10,
+                "10" : 1
             }
         }
     },
     "allLocations": [
-        "Earth"
+        "Earth", "Moon"
     ]
 }
