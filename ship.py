@@ -26,6 +26,7 @@ def getUserInput(validList):
             print("Please use a valid integer for location")
 
 def openShop(GETR):
+    print("opened shop")
     return
 
 
@@ -115,7 +116,7 @@ class Ship(gridMap.GridMap):
 
         userInput = getUserInput(validList)
         userSelectedPlace = allPlanets["allLocations"][userInput]
-        if userSelectedPlace == allPlanets["allLocations"].index("Shop")
+        if userSelectedPlace == "Shop":
             openShop(GETR)
         return userSelectedPlace
 
