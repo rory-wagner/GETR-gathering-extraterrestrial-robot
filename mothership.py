@@ -14,20 +14,28 @@ def getValueOfMaterial(material):
 def handleGetQuest(GETR):
     data = jsonHandler.getDataFromFile("quests.json")
     ID = random.randrange(0, len(data))
+    if ID != None:
+        print("You already have an Active Quest")
+        return
     GETR.setActiveQuest(ID)
     print(data[ID]["textToUser"])
     print("Quest Added!")
 
 def handleFinishQuest(GETR):
     ID = GETR.getActiveQuest()
+    if ID == None:
+        print("You do not have an Active Quest.")
+        return
     data = jsonHandler.getDataFromFile("quests.json")
     material = data[ID]["material"]
     count = data[ID]["count"]
     value = getValueOfMaterial(material)
-    reward = value * count
+    bonus = 3
+    reward = value * count * bonus
     if GETR.getInventorySlot(material) >= count:
         GETR.setInventorySlot(material, GETR.getInventorySlot(material) - count)
         GETR.setByteCoins(GETR.getByteCoins() + reward)
+        GETR.setActiveQuest(None)
     else:
         print("You have angered us by not having enough material!\nGo away!")
 

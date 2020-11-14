@@ -74,6 +74,7 @@ class Robot:
         else:
             self.x = newX
             currentMap.setVisited(self.getX(), self.getY())
+            currentMap.checkAndDoRandomScenario(self)
 
 
     def setY(self, currentMap, newY):
@@ -88,6 +89,7 @@ class Robot:
         else:
             self.y = newY
             currentMap.setVisited(self.getX(), self.getY())
+            currentMap.checkAndDoRandomScenario(self)
 
     def setOnPlanet(self, value):
         self.onPlanet = value

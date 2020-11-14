@@ -265,3 +265,7 @@ class GridMap:
         # returns the int of the id that exists at location
         return self.map[x][y]
 
+    def checkAndDoRandomScenario(self, GETR):
+        #empty function to inherit
+        return
+

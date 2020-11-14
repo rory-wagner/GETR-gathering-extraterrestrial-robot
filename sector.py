@@ -1,6 +1,7 @@
 import gridMap
 import jsonHandler
 import random
+import scenariosHandler
 
 class Sector(gridMap.GridMap):
     def __init__(self, width, height, planet):
@@ -51,3 +52,11 @@ class Sector(gridMap.GridMap):
             #empty out the cell:
             self.setCellID(x, y, 0)
         return
+
+    def checkAndDoRandomScenario(self, GETR):
+        #check if place can be scenario available, then do it
+        x = GETR.getX()
+        y = GETR.getY()
+        if self.getCellID(x, y) == 0:
+            if random.randrange(0,100) < 10:
+                scenariosHandler.performRandomScenario(GETR, self)
