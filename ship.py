@@ -5,6 +5,7 @@ import inputConsole
 import shop
 import mothership
 from stringcolor import *
+import time
 
 def printAllLocations(listOfStrings):
     TLCor = u'\u250C'
@@ -44,6 +45,7 @@ def printAllLocations(listOfStrings):
         print(cs((Vline + mystring + bigskip + Vline), "Turquoise2"))
     print(cs(End, "Turquoise2"))
 
+
 def makeValidList(allPlanets):
     finalList = []
     for i in range(len(allPlanets["allLocations"])):
@@ -56,6 +58,9 @@ def getUserInput(validList):
         try:
             userInput = int(userInput)
             if userInput in validList:
+                print(cs("Travellin'...", "Turquoise2"))
+                time.sleep(3)
+                print()
                 return userInput
             else:
                 raise Exception
