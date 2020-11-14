@@ -6,7 +6,7 @@
         },
         "Earth":{
             "name" : "Earth",
-            "color": "",
+            "color": "White",
             "concentration": {
                 "8"     : 30,
                 "9"     : 20,
@@ -15,7 +15,7 @@
         },
         "Moon":{
             "name" : "Moon",
-            "color": "",
+            "color": "White",
             "concentration": {
                 "6" : 10,
                 "10" : 1
