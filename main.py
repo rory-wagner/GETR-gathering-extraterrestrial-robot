@@ -195,7 +195,7 @@ def main():
     currentSector = sector.Sector(11, 11, "Earth")
 
     # print a beginning to the tutorial
-    # enterTutorial()
+    enterTutorial()
 
     #print a beginning to the real game
     mainLoop(GETR, personalShip, currentSector)

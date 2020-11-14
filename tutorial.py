@@ -73,7 +73,8 @@ def teachCommands():
     messages = [
         "Good. You're moving like a T-800 already. XD 101.", "A couple other things to note, there is a help menu to help you if you forget your potential.",
         "Just access it via 'h'. Easy as that.", "You can also interact with the world around you via 'e'.", 
-        "Just make sure you are standing almost on top of whatever you're fiddling with."
+        "Just make sure you are standing almost on top of whatever you're fiddling with.", "Oh. you can also look around you by using 'm'",
+        "To keep track of yourself look for the teeny tiny star", "Look at you. Bright and beaming with potential."
     ]
 
     for i in range(len(messages)):
