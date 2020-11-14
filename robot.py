@@ -38,9 +38,12 @@ class Robot:
     def getInventory(self):
         return self.inventory
 
+    def getInventorySlot(self, key):
+        return self.inventory[key.title()]
+
     def setByteCoins(self, coins):
-        if coins <= 0:
-            self.byteCoins = 0
+        if coins < 0:
+            # self.byteCoins = 0
             raise BadInputException("Too little moneis given")
         else:
             self.byteCoins = coins
@@ -93,7 +96,10 @@ class Robot:
     def setInventorySlot(self, item, itemNum):
         #might need more error checking here if we want a maximum on the inventory.
         #also check if given bad item
-        self.inventory[item] = itemNum
+        if itemNum < 0:
+            raise BadInputException("Trying to sell too much")
+        else:
+            self.inventory[item] = itemNum
 
     def fillInventory(self):
         allItemsAndWorth = jsonHandler.getDataFromFile("mapData.json")
