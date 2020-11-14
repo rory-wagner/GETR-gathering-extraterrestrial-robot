@@ -50,12 +50,10 @@ class GridMap:
             cross, HLine, Vline, DownT, LeftT,
             RightT, UpT, TLCor, TRCor, BLCor, BRCor
         ]
-        lines = self.prepLines(robot)
-        self.colorizeAndPrint(lines)
+        self.printLines(robot)
         
     def colorizeAndPrint(self, lines):
-        data = jsonHandler.getDataFromFile("planetData.json")
-        color = data["locationList"][self.planet]["color"]
+        
         for line in lines:
             if ((line[0] == u'\u250C') or (line[0] == u'\u2514') or (line[0] == u'\u251C')):
                 print(cs(line, color))
@@ -78,19 +76,16 @@ class GridMap:
                     else:
                         holdstring += line[char]
 
-    def prepLines(self, robot):
-        buffer = []
-        buffer.append(self.createTopLine())
+    def printLines(self, robot):
+        self.createTopLine()
         for i in range(self.height):
 
-            buffer.append(self.createMidLines(robot, i))
+            self.createMidLines(robot, i)
 
             if i == self.height - 1:
-                buffer.append(self.createBotLine())
+                self.createBotLine()
             else:
-                buffer.append(self.createSepLine())
-
-        return buffer
+                self.createSepLine()
     
     def createTopLine(self):
         TLCor = u'\u250C'
@@ -110,15 +105,27 @@ class GridMap:
         finalLine = ""
         for item in linebuffer:
             finalLine += item
-
-        return finalLine
+        data = jsonHandler.getDataFromFile("planetData.json")
+        color = data["locationList"][self.planet]["color"]
+        print(cs(finalLine, color))
 
     def createMidLines(self, robot, y):
         Vline = u'\u2502'
-        mainLineBuffer = []
-        blankLineBuffer = []
-        mainLineBuffer.append(Vline)
-        blankLineBuffer.append(Vline)
+        data = jsonHandler.getDataFromFile("planetData.json")
+        planetColor = data["locationList"][self.planet]["color"]
+
+        # Print Top Blank line
+        print(cs(Vline, planetColor), end="")
+        for i in range(self.width):
+            print("       ", end="")
+            if i == self.width - 1:
+                print(cs(Vline, planetColor))
+            else:
+                print(cs(Vline, planetColor), end="")
+
+        # Print Content line
+        print(cs(Vline, planetColor), end="")
+
         for i in range(self.width):
             id = self.getLocationID(i, y)
             rep = self.getMapRep(id, i, y)
@@ -137,24 +144,39 @@ class GridMap:
                 postspaces = prespaces
 
             for j in range(int(prespaces)):
-                mainLineBuffer.append(" ")
-            mainLineBuffer.append(rep)
+                print(" ", end="")
+
+            data = jsonHandler.getDataFromFile("mapData.json")
+            checkList = data["ids"]
+            color = ""
+            if self.robotIn(robot, i, y):
+                for key in checkList:
+                    if key["mapRep"] == rep[:-1]:
+                        color = key["color"]
+            else:
+                for key in checkList:
+                    if key["mapRep"] == rep:
+                        color = key["color"]
+
+            print(cs(rep, color), end="")
 
             for j in range(int(postspaces)):
-                mainLineBuffer.append(" ")
+                print(" ", end="")
 
-            mainLineBuffer.append(Vline)
-            blankLineBuffer.append("       ")
-            blankLineBuffer.append(Vline)
-        finalMainLine = ""
-        finalBlankLine = ""
-        for item in mainLineBuffer:
-            finalMainLine += item
-        for other in blankLineBuffer:
-            finalBlankLine += other
-        #This combines all the 3 lines into one string to send to the buffer
-        finalLine = finalBlankLine + "\n" + finalMainLine + "\n" + finalBlankLine
-        return finalLine
+            if i == self.width - 1:
+                print(cs(Vline, planetColor))
+            else:
+                print(cs(Vline, planetColor), end="")
+
+        # Print Bottom Blank line
+
+        print(cs(Vline, planetColor), end="")
+        for i in range(self.width):
+            print("       ", end="")
+            if i == self.width - 1:
+                print(cs(Vline, planetColor))
+            else:
+                print(cs(Vline, planetColor), end="")
 
     def robotIn(self, robot, x, y):
         if(robot.getX() == x) and (robot.getY() == y):
@@ -167,6 +189,8 @@ class GridMap:
         RightT= u'\u2524'
         LeftT = u'\u251C'
         HLine = u'\u2500'
+        data = jsonHandler.getDataFromFile("planetData.json")
+        planetColor = data["locationList"][self.planet]["color"]
         sepLineBuffer = []
         sepLineBuffer.append(LeftT)
         for i in range(self.width):
@@ -178,13 +202,15 @@ class GridMap:
         finalSep = ""
         for item in sepLineBuffer:
             finalSep += item
-        return finalSep
+        print(cs(finalSep, planetColor))
 
     def createBotLine(self):
         BLCor = u'\u2514'
         BRCor = u'\u2518'
         HLine = u'\u2500'
         UpT   = u'\u2534'
+        data = jsonHandler.getDataFromFile("planetData.json")
+        planetColor = data["locationList"][self.planet]["color"]
         linebuffer = []
         linebuffer.append(BLCor)
         for i in range(self.width):
@@ -196,7 +222,7 @@ class GridMap:
         finalLine = ""
         for item in linebuffer:
             finalLine += item
-        return finalLine
+        print(cs(finalLine, planetColor))
 
     def getMapRep(self, id, x, y):
         # goes to map data looks at id
