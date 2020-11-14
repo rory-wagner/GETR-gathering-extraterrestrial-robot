@@ -27,9 +27,16 @@
             "concentration": {
                 
             }
+        },
+        "Mothership":{
+            "name" : "Mothership",
+            "color": "",
+            "concentration": {
+                
+            }
         }
     },
     "allLocations": [
-        "Earth", "Moon", "Shop"
+        "Earth", "Moon", "Shop", "Mothership"
     ]
 }

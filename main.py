@@ -74,13 +74,17 @@ def moveRight(GETR, currentMap):
 def interact(GETR, currentMap):
     #gives back a call-back function
     userOption = currentMap.interact(GETR)
-    if userOption == "Exit":
+    if userOption in jsonHandler.getDataFromFile("planetData.json")["allLocations"]:
+        if userOption == "Shop" or userOption == "Mothership":
+            userOption == "CurrentPlanet"
+    elif userOption == "Exit":
         GETR.setOnPlanet(True)
         GETR.setX(currentMap, 5)
         GETR.setY(currentMap, 5)
         currentMap.setVisited(5, 5)
     else:
         return userOption
+    return None
 
 def displayMap(GETR, currentMap):
     currentMap.setVisited(GETR.getX(), GETR.getY())
@@ -165,12 +169,15 @@ def mainLoop(GETR, personalShip, currentSector):
         selectedAction = ""
         if onPlanet:
             selectedAction = getValidActionFromUser(GETR, currentSector)
-            doAction(GETR, currentSector, selectedAction)
+            possibleShip = doAction(GETR, currentSector, selectedAction)
         else:
             selectedAction = getValidActionFromUser(GETR, personalShip)
             possibleSector = doAction(GETR, personalShip, selectedAction)
             if possibleSector != None:
-                currentSector.generateMap(possibleSector)
+                if possibleSector == "CurrentPlanet":
+                    currentSector.generateMap(currentSector.planet)
+                else:
+                    currentSector.generateMap(possibleSector)
 
     return
 
