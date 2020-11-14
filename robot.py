@@ -59,8 +59,8 @@ class Robot:
         if newY < 0:
             self.y = 0
             raise BadInputException("Small y value given")
-        elif newY == currentMap.getWidth():
-            self.y = currentMap.getWidth() - 1
+        elif newY == currentMap.getHeight():
+            self.y = currentMap.getHeight() - 1
             raise BadInputException("Large y value given")
         else:
             self.y = newY
