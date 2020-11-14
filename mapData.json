@@ -54,7 +54,7 @@
             "ID": 7,
             "name":"Silver",
             "mapRep": "Ag",
-            "cost": "10",
+            "cost": 10,
             "color": "White",
             "validActions": []
         },
@@ -101,6 +101,7 @@
             "ID": 13,
             "name":"Battery",
             "mapRep": "Batt",
+            "cost": 20,
             "color": "White",
             "validActions": []
         },
