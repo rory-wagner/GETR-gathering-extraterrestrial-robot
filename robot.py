@@ -69,8 +69,8 @@ class Robot:
             raise BadInputException("Small x value given")  
         elif newX == currentMap.getWidth():
             self.x = currentMap.getWidth() - 1
-            raise BadInputException("Large x value given")
             currentMap.setVisited(self.getX(), self.getY())
+            raise BadInputException("Large x value given")
         else:
             self.x = newX
             currentMap.setVisited(self.getX(), self.getY())
