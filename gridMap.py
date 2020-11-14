@@ -11,6 +11,11 @@ class GridMap:
         self.visitedMap = self.createVisitedMapArray()
         self.planet = "Default"
 
+    def getCellID(self, x, y):
+        return int(self.map[x][y])
+    def setCellID(self, x, y, num):
+        self.map[x][y] = int(num)
+
     def getWidth(self):
         return self.width
     def getHeight(self):
@@ -34,7 +39,7 @@ class GridMap:
         # This will place all of the materials and encounters on the map
         return
     
-    def display(self, robot):
+    def display(self, GETR):
         cross = u'\u253C'
         HLine = u'\u2500'
         Vline = u'\u2502'
@@ -50,13 +55,13 @@ class GridMap:
             cross, HLine, Vline, DownT, LeftT,
             RightT, UpT, TLCor, TRCor, BLCor, BRCor
         ]
-        self.printLines(robot)
+        self.printLines(GETR)
 
-    def printLines(self, robot):
+    def printLines(self, GETR):
         self.createTopLine()
         for i in range(self.height):
 
-            self.createMidLines(robot, i)
+            self.createMidLines(GETR, i)
 
             if i == self.height - 1:
                 self.createBotLine()
@@ -85,7 +90,7 @@ class GridMap:
         color = data["locationList"][self.planet]["color"]
         print(cs(finalLine, color))
 
-    def createMidLines(self, robot, y):
+    def createMidLines(self, GETR, y):
         Vline = u'\u2502'
         data = jsonHandler.getDataFromFile("planetData.json")
         planetColor = data["locationList"][self.planet]["color"]
@@ -106,7 +111,7 @@ class GridMap:
             id = self.getLocationID(i, y)
             rep = self.getMapRep(id, i, y)
 
-            if self.robotIn(robot, i, y):
+            if self.robotIn(GETR, i, y):
                 totalspaces = 8 - len(rep) - 1
                 rep += "*"
             else:
@@ -125,7 +130,7 @@ class GridMap:
             data = jsonHandler.getDataFromFile("mapData.json")
             checkList = data["ids"]
             color = ""
-            if self.robotIn(robot, i, y):
+            if self.robotIn(GETR, i, y):
                 for key in checkList:
                     if key["mapRep"] == rep[:-1]:
                         color = key["color"]
@@ -157,8 +162,8 @@ class GridMap:
     def setVisited(self, x, y):
         self.visitedMap[x][y] = True
 
-    def robotIn(self, robot, x, y):
-        if(robot.getX() == x) and (robot.getY() == y):
+    def robotIn(self, GETR, x, y):
+        if(GETR.getX() == x) and (GETR.getY() == y):
             self.setVisited(x, y)
             return True
         else:
@@ -222,24 +227,24 @@ class GridMap:
         else:
             return False
 
-    def getColor(self, robot):
-        # gets the location of the robot and looks up
+    def getColor(self, GETR):
+        # gets the location of the GETR and looks up
         # the color that is set for the planet
         return color
 
-    def isValidMove(self, robot, action, extraOptions):
-        # receives a robot object and action as lowercase string
+    def isValidMove(self, GETR, action, extraOptions):
+        # receives a GETR object and action as lowercase string
         # returns bool
-        contentsId = int(self.getLocationID(robot.getX(), robot.getY()))
+        contentsId = int(self.getLocationID(GETR.getX(), GETR.getY()))
         data = jsonHandler.getDataFromFile("mapData.json")
         actions = data["ids"][contentsId]["validActions"]
-        if robot.getY() < self.height - 1:
+        if GETR.getY() < self.height - 1:
             actions.append("s")
-        if robot.getY() > 0:
+        if GETR.getY() > 0:
             actions.append("w")
-        if robot.getX() < self.width - 1:
+        if GETR.getX() < self.width - 1:
             actions.append("d")
-        if robot.getX() > 0:
+        if GETR.getX() > 0:
             actions.append("a")
         for opt in extraOptions:
             actions.append(opt)
@@ -248,10 +253,10 @@ class GridMap:
         else:
             return False
 
-    def getValidOptions(self, robot):
-        # receives a robot object
+    def getValidOptions(self, GETR):
+        # receives a GETR object
         # return a list of strings representing valid actions
-        contentsId = self.getLocationID(robot.getX(), robot.getY())
+        contentsId = self.getLocationID(GETR.getX(), GETR.getY())
         data = jsonHandler.getDataFromFile("mapData.json")
         return data["ids"][contentsId]["validActions"]
 
