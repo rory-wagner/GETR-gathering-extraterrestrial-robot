@@ -1,0 +1,4 @@
+
+
+def getInput():
+    return input()

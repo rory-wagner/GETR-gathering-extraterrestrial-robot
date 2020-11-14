@@ -46,21 +46,21 @@ class Robot:
             self.byteCoins = coins
 
     def setX(self, currentMap, newX):
-        if newX <= 0:
+        if newX < 0:
             self.x = 0
             raise BadInputException("Small x value given")
-        elif newX > currentMap.getWidth():
-            self.x = currentMap.getWidth()
+        elif newX == currentMap.getWidth():
+            self.x = currentMap.getWidth() - 1
             raise BadInputException("Large x value given")
         else:
             self.x = newX
 
     def setY(self, currentMap, newY):
-        if newY <= 0:
+        if newY < 0:
             self.y = 0
             raise BadInputException("Small y value given")
-        elif newY > currentMap.getWidth():
-            self.y = currentMap.getWidth()
+        elif newY == currentMap.getWidth():
+            self.y = currentMap.getWidth() - 1
             raise BadInputException("Large y value given")
         else:
             self.y = newY

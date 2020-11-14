@@ -1,6 +1,7 @@
 import gridMap
 import jsonHandler
 import robot
+import inputConsole
 
 def printAllLocations(listOfStrings):
     for i in range(len(listOfStrings)):
@@ -14,7 +15,7 @@ def makeValidList(allPlanets):
 
 def getUserInput():
     while True:
-        userInput = input("->")
+        userInput = inputConsole.getInput()
         try:
             userInput = int(userInput)
             if userInput in validList:
@@ -22,7 +23,7 @@ def getUserInput():
             else:
                 raise Exception
         except:
-            print("Please use a valid location")
+            print("Please use a valid integer for location")
 
 
 #callback Functions:
