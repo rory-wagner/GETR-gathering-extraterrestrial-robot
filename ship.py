@@ -60,7 +60,26 @@ def getUserInput(validList):
             else:
                 raise Exception
         except:
-            print("Please use a valid integer for location")
+            TLCor = u'\u250C'
+            TRCor = u'\u2510'
+            BLCor = u'\u2514'
+            BRCor = u'\u2518'
+            HLine = u'\u2500'
+            Vline = u'\u2502'
+
+            Top = TLCor
+            for i in range(33):
+                Top += HLine
+            Top += TRCor
+
+            print(cs(Top, "Turquoise2"))
+            print(cs(Vline + "Sorry Cap'n hav'n heard of there." + Vline, "Turquoise2"))
+            End = BLCor
+            for i in range(33): 
+                End += HLine
+            End += BRCor
+
+            print(cs(End, "Turquoise2"))
 
 class Ship(gridMap.GridMap):
     def __init__(self):
