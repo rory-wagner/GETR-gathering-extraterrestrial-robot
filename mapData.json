@@ -25,21 +25,21 @@
             "ID": 3,
             "name":"Generator",
             "mapRep": "Gen",
-            "color": "Green",
+            "color": "Yellow",
             "validActions": ["e"]
         },
         {
             "ID": 4,
             "name":"Ship Tank",
             "mapRep": "S Tank",
-            "color": "White",
+            "color": "Blue4",
             "validActions": ["e"]
         },
         {
             "ID": 5,
             "name":"Cargo",
             "mapRep": "Crgo",
-            "color": "White",
+            "color": "DarkOrange",
             "validActions": ["e"]
         },
         {
@@ -47,7 +47,7 @@
             "name":"Gold",
             "mapRep": "Au",
             "cost": 50,
-            "color": "White",
+            "color": "Gold",
             "validActions": []
         },
         {
@@ -55,7 +55,7 @@
             "name":"Silver",
             "mapRep": "Ag",
             "cost": 10,
-            "color": "White",
+            "color": "Silver",
             "validActions": []
         },
         {
@@ -63,7 +63,7 @@
             "name":"Carbon",
             "mapRep": "C",
             "cost": 2,
-            "color": "White",
+            "color": "DarkGrey",
             "validActions": []
         },
         {
@@ -71,14 +71,14 @@
             "name":"Ice",
             "mapRep": "Ice",
             "cost": 1,
-            "color": "White",
+            "color": "Aqua",
             "validActions": []
         },
         {
             "ID": 10,
             "name":"Wreckage",
             "mapRep": "Wrck",
-            "color": "White",
+            "color": "Grey5",
             "validActions": []
         },
         {
@@ -86,7 +86,7 @@
             "name":"Titanium",
             "mapRep": "Ti",
             "cost": 8,
-            "color": "White",
+            "color": "LightGrey3",
             "validActions": []
         },
         {
@@ -94,7 +94,7 @@
             "name":"Iron",
             "mapRep": "Fe",
             "cost": 3,
-            "color": "White",
+            "color": "DarkOrange3",
             "validActions": []
         },
         {
@@ -102,21 +102,21 @@
             "name":"Battery",
             "mapRep": "Batt",
             "cost": 20,
-            "color": "White",
+            "color": "Yellow2",
             "validActions": []
         },
         {
             "ID": 14,
             "name":"Exit Hatch",
             "mapRep": "Exit",
-            "color": "White",
+            "color": "Red",
             "validActions": ["e"]
         },
         {
             "ID": 15,
             "name":"Engine",
             "mapRep": "Eng",
-            "color": "White",
+            "color": "Cyan",
             "validActions": ["e"]
         },
         {
@@ -124,7 +124,7 @@
             "name": "Portable Tank",
             "mapRep": "P Tnk",
             "cost": 5,
-            "color": "White",
+            "color": "DodgerBlue3",
             "validActions": []
         },
 

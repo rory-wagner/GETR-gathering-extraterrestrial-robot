@@ -51,30 +51,6 @@ class GridMap:
             RightT, UpT, TLCor, TRCor, BLCor, BRCor
         ]
         self.printLines(robot)
-        
-    def colorizeAndPrint(self, lines):
-        
-        for line in lines:
-            if ((line[0] == u'\u250C') or (line[0] == u'\u2514') or (line[0] == u'\u251C')):
-                print(cs(line, color))
-            else:
-                holdstring = ""
-                for char in line:
-                    if (line[char] == u'\u2502'):
-                        print(cs(line[char], color), sep="")
-                    elif (line[char] == " "):
-                        print(line[char])
-                        if holdstring != "":
-                            data = jsonHandler.getDataFromFile("mapData.json")
-                            checkList = data["ids"]
-                            color = ""
-                            for key in checkList:
-                                if checkList[key]["mapRep"] == holdstring or checkList[key]["mapRep"] == holdstring[:-1]:
-                                    color = checkList[key]["color"]
-                            print(cs(holdstring, color))
-                            holdstring = ""
-                    else:
-                        holdstring += line[char]
 
     def printLines(self, robot):
         self.createTopLine()
