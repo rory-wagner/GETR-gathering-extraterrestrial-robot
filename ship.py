@@ -172,7 +172,7 @@ class Ship(gridMap.GridMap):
         return
     
     def PropellantTankInteract(self, GETR):
-        #check if they have and want to use a propellant tank to fuel the ship
+        print("Tank is fueled up.")
         return
 
     def CargoInteract(self, GETR):
