@@ -164,7 +164,7 @@ class GridMap:
 
     def robotIn(self, GETR, x, y):
         if(GETR.getX() == x) and (GETR.getY() == y):
-            self.setVisited(x, y)
+            # self.setVisited(x, y)
             return True
         else:
             return False

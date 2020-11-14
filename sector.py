@@ -30,6 +30,7 @@ class Sector(gridMap.GridMap):
                             break
     
     def reenterShip(self, GETR):
+        #REEENTERING SHIP HERE****
         GETR.setX(self, 2)
         GETR.setY(self, 1)
         GETR.setOnPlanet(False)
