@@ -16,7 +16,7 @@ def getValidActionFromUser(GETR, placeToCheckValidity):
         if canDo:
             return userInput
         else:
-            print("Please type in a valid option. Type 'h' for help")
+            print("Huh? Aww the simple little GETR is trying to communicate. Type 'h' if your not sure what to input.")
 
 def moveUp(GETR, currentMap):
     y = GETR.getY()

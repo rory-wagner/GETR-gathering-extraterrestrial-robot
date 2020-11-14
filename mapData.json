@@ -63,7 +63,7 @@
             "name":"Carbon",
             "mapRep": "C",
             "cost": 2,
-            "color": "DarkGrey",
+            "color": "Grey8",
             "validActions": ["e"]
         },
         {

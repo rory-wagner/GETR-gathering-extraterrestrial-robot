@@ -3,10 +3,45 @@ import jsonHandler
 import robot
 import inputConsole
 import shop
+from stringcolor import *
 
 def printAllLocations(listOfStrings):
+    TLCor = u'\u250C'
+    TRCor = u'\u2510'
+    BLCor = u'\u2514'
+    BRCor = u'\u2518'
+    HLine = u'\u2500'
+    Vline = u'\u2502'
+    RightT= u'\u2524'
+    LeftT = u'\u251C'
+
+    Top = TLCor
+    for i in range(25):
+        Top += HLine
+    Top += TRCor
+    
+    Bot = LeftT
+    for i in range(25): 
+        Bot += HLine
+    Bot += RightT
+
+    End = BLCor
+    for i in range(25): 
+        End += HLine
+    End += BRCor
+
+    print(cs(Top, "Turquoise2"))
+    print(cs(Vline + "    Where to Skipper?    " + Vline, "Turquoise2"))
+    print(cs(Bot, "Turquoise2"))
+
     for i in range(len(listOfStrings)):
-        print(("%s) " % i) + listOfStrings[i])
+        mystring = ( " %s) " % i) + listOfStrings[i]
+        chars = len(mystring)
+        bigskip = ""
+        for i in range(25 - chars):
+            bigskip += " "
+        print(cs((Vline + mystring + bigskip + Vline), "Turquoise2"))
+    print(cs(End, "Turquoise2"))
 
 def makeValidList(allPlanets):
     finalList = []
@@ -124,7 +159,38 @@ class Ship(gridMap.GridMap):
         return
 
     def ExitInteract(self, GETR):
-        print("Exiting ship")
+        TLCor = u'\u250C'
+        TRCor = u'\u2510'
+        BLCor = u'\u2514'
+        BRCor = u'\u2518'
+        HLine = u'\u2500'
+        Vline = u'\u2502'
+        
+        Top = TLCor
+        for i in range(25):
+            Top += HLine
+        Top += TRCor
+
+        print(cs(Top, "Violet"))
+
+        monologue = [" Exiting ship...", " I'll miss you!", " Be safe!", 
+            " Make good choices!", " Remember who you are!",  
+            " Oh.They grow up so fast."
+        ]
+        for text in monologue:
+            textline = Vline + text
+            textnum = len(text)
+            for i in range(25 - textnum):
+                textline += " "
+            textline += Vline
+            print(cs(textline, "Violet"))
+
+        End = BLCor
+        for i in range(25): 
+            End += HLine
+        End += BRCor
+        print(cs(End, "Violet"))
+
         return "Exit"
 
     def EngineInteract(self, GETR):

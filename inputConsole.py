@@ -1,7 +1,11 @@
 from stringcolor import *
 
 def getInput():
-    return input(cs("_> ", "Lime")).lower()
+    value = input(cs("_> ", "Lime")).lower()
+    print()
+    return value
 
 def getNormalInput():
-    return input(cs("_> ", "Lime"))
+    value = input(cs("_> ", "Lime"))
+    print()
+    return value
