@@ -9,7 +9,8 @@ def intro():
     message = "Greetings program ..."
     for i in range(len(message)):
         print(cs(message[i], "Green3"), end="")
-        time.sleep(.1)
+    print()
+    time.sleep(1)
 
 
 def teachCommands():
