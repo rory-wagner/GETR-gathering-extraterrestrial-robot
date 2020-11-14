@@ -1,5 +1,9 @@
 {
     "locationList": {
+        "Default":{
+            "name" : "Default",
+            "color": "White"
+        },
         "Earth":{
             "name" : "Earth",
             "color": "",
