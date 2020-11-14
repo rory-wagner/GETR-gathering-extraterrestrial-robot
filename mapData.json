@@ -12,7 +12,7 @@
             "name":"Ship",
             "mapRep": "Ship",
             "color": "White",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 2,
@@ -48,7 +48,7 @@
             "mapRep": "Au",
             "cost": 50,
             "color": "Gold",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 7,
@@ -56,7 +56,7 @@
             "mapRep": "Ag",
             "cost": 10,
             "color": "Silver",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 8,
@@ -64,7 +64,7 @@
             "mapRep": "C",
             "cost": 2,
             "color": "Grey8",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 9,
@@ -72,14 +72,14 @@
             "mapRep": "Ice",
             "cost": 1,
             "color": "Aqua",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 10,
             "name":"Wreckage",
             "mapRep": "Wrck",
             "color": "Grey5",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 11,
@@ -87,7 +87,7 @@
             "mapRep": "Ti",
             "cost": 8,
             "color": "LightGrey3",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 12,
@@ -95,7 +95,7 @@
             "mapRep": "Fe",
             "cost": 3,
             "color": "DarkOrange3",
-            "validActions": []
+            "validActions": ["e"]
         },
         {
             "ID": 13,
