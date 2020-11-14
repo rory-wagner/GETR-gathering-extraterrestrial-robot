@@ -3,11 +3,13 @@ import tutorial
 import jsonHandler
 import string
 import gridMap
+import inputConsole
 
 def getValidActionFromUser(GETR, placeToCheckValidity):
     while True:
-        userInput = input("->").lower()
-        canDo = placeToCheckValidity.isValidMove(GETR, userInput)
+        userInput = inputConsole.getInput().lower()
+        extraValidOptions = ["m"]
+        canDo = placeToCheckValidity.isValidMove(GETR, userInput, extraValidOptions)
         if canDo:
             return userInput
         else:
@@ -16,22 +18,22 @@ def getValidActionFromUser(GETR, placeToCheckValidity):
 def moveUp(GETR, currentMap):
     y = GETR.getY()
     y -= 1
-    GETR.setY(y)
+    GETR.setY(currentMap, y)
 
 def moveLeft(GETR, currentMap):
     x = GETR.getX()
     x -= 1
-    GETR.setX(x)
+    GETR.setX(currentMap, x)
 
 def moveDown(GETR, currentMap):
     y = GETR.getY()
     y += 1
-    GETR.setY(y)
+    GETR.setY(currentMap, y)
 
 def moveRight(GETR, currentMap):
     x = GETR.getX()
     x += 1
-    GETR.setX(x)
+    GETR.setX(currentMap, x)
 
 def interact(GETR, currentMap):
     #gives back a call-back function
@@ -41,14 +43,18 @@ def interact(GETR, currentMap):
     else:
         return userOption
 
+def displayMap(GETR, currentMap):
+    currentMap.display(GETR)
+    return
+
 def doAction(GETR, currentMap, action):
-    print("doing Action")
     allActions = {
         "w": moveUp,
         "a": moveLeft,
         "s": moveDown,
         "d": moveRight,
         "e": interact,
+        "m": displayMap,
     }
     for a in allActions:
         if a == action:
@@ -66,7 +72,7 @@ def mainLoop(GETR, personalShip, currentSector):
             selectedAction = getValidActionFromUser(GETR, personalShip)
             possibleSector = doAction(GETR, personalShip, selectedAction)
             if possibleSector != None:
-                #here we will change sector
+                currentSector.generateMap(possibleSector)
 
     return
 

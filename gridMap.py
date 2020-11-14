@@ -9,6 +9,11 @@ class GridMap:
         self.height = height
         self.map = self.createMapArray()
         self.visitedMap = self.createVisitedMapArray()
+
+    def getWidth(self):
+        return self.width
+    def getHeight(self):
+        return self.height
         
     def createMapArray(self):
         prepList = []
@@ -192,12 +197,22 @@ class GridMap:
         # the color that is set for the planet
         return "White"
 
-    def isValidMove(self, robot, action):
+    def isValidMove(self, robot, action, extraOptions):
         # receives a robot object and action as lowercase string
         # returns bool
-        contentsId = self.getLocationID(robot.getX, robot.getY)
+        contentsId = self.getLocationID(robot.getX(), robot.getY())
         data = jsonHandler.getDataFromFile("mapData.json")
         actions = data["ids"][contentsId]["validActions"]
+        if robot.getY() < self.height - 1:
+            actions.append("s")
+        if robot.getY() > 0:
+            actions.append("w")
+        if robot.getX() < self.width - 1:
+            actions.append("d")
+        if robot.getX() > 0:
+            actions.append("a")
+        for opt in extraOptions:
+            actions.append(opt)
         if action in actions:
             return True
         else:
@@ -206,7 +221,7 @@ class GridMap:
     def getValidOptions(self, robot):
         # receives a robot object
         # return a list of strings representing valid actions
-        contentsId = self.getLocationID(robot.getX, robot.getY)
+        contentsId = self.getLocationID(robot.getX(), robot.getY())
         data = jsonHandler.getDataFromFile("mapData.json")
         return data["ids"][contentsId]["validActions"]
 
