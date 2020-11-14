@@ -43,7 +43,40 @@ def printMothershipOptions():
     print("Would you like to:")
     print("g) Get Quest")
     print("f) Finish Quest")
+    print("p) Pay")
     print("q) Leave")
+
+def printSuccessfulPay():
+
+    exit(0)
+    return
+
+def printFailurePay():
+
+    exit(1)
+    return
+
+def printSuccessfulRebel():
+
+    exit(0)
+    return
+
+def printFailureRebel():
+
+    exit(1)
+    return
+
+def payForFreedom(GETR):
+    if GETR.getByteCoins() > 1000:
+        printSuccessfulPay()
+    else:
+        printFailurePay()
+
+def rebel(GETR):
+    if random.randrange(0, 1000) < 1:
+        printSuccessfulRebel()
+    else:
+        printFailureRebel()
 
 def openMothership(GETR):
     printMothershipOptions()
@@ -57,6 +90,10 @@ def openMothership(GETR):
             break
         elif userInput == "q":
             break
+        elif userInput == "p":
+            payForFreedom(GETR)
+        elif userInput == "r":
+            rebel(GETR)
         else:
             print("Please enter a valid quest option.")
     return
