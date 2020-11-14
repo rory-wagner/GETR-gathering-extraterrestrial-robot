@@ -38,15 +38,15 @@ def getValidActionFromUser(GETR, placeToCheckValidity):
                 topLine += HLine
             topLine += TRCor
 
-            print(cs(topLine, "SteelBlue"))
+            print(cs(topLine, "Green3"))
 
-            print(cs(line, "SteelBlue"))
+            print(cs(line, "Green3"))
         
             botLine = BLCor 
             for i in range(linelen - 2):
                 botLine += HLine
             botLine += BRCor
-            print(cs(botLine, "SteelBlue"))
+            print(cs(botLine, "Green3"))
         
 
 def moveUp(GETR, currentMap):
@@ -123,7 +123,7 @@ def helpMenu(GETR, currentMap):
     aline = Vline + "'a' key --------------- Moves your GETR left."+ Vline
     sline = Vline + "'s' key --------------- Moves your GETR down."+ Vline
     dline = Vline + "'d' key -------------- Moves your GETR right."+ Vline
-    eline = Vline + "'e' key - Interact with room where your GETR."+ Vline
+    eline = Vline + "'e' key ----------------- Interact with room."+ Vline
     mline = Vline + "'m' key --- Mine resource where your GETR is."+ Vline
     hline = Vline + "'h' key ------------ Displays this help menu."+ Vline
 
