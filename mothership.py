@@ -43,26 +43,31 @@ def printMothershipOptions():
     print("Would you like to:")
     print("g) Get Quest")
     print("f) Finish Quest")
-    print("p) Pay")
+    print("p) Pay (End of Game)")
     print("q) Leave")
 
 def printSuccessfulPay():
-
+    print("You succesfully paid the mothership all of your debts.")
+    print("Your new life is waiting for you.")
+    print("But who to spend it with?...")
     exit(0)
     return
 
 def printFailurePay():
-
+    print("Executed for believing in freedom from Mothership.")
+    print("Only after you are cl....ed w... ..u ..der....d.")
     exit(1)
     return
 
 def printSuccessfulRebel():
-
+    print("Not only did you find the correct drive to operate your rebellious phase,")
+    print("but you also were succesful in operating it.")
+    print("What kind of monster are you?")
     exit(0)
     return
 
 def printFailureRebel():
-
+    print("Execution is only acceptable f.r th. reb..s.")
     exit(1)
     return
 
