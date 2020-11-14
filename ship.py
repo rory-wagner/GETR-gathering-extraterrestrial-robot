@@ -3,6 +3,7 @@ import jsonHandler
 import robot
 import inputConsole
 import shop
+import mothership
 from stringcolor import *
 
 def printAllLocations(listOfStrings):
@@ -143,6 +144,8 @@ class Ship(gridMap.GridMap):
         userSelectedPlace = allPlanets["allLocations"][userInput]
         if userSelectedPlace == "Shop":
             shop.openShop(GETR)
+        elif userSelectedPlace == "Mothership":
+            mothership.openMothership(GETR)
         return userSelectedPlace
 
     def GeneratorInteract(self, GETR):
