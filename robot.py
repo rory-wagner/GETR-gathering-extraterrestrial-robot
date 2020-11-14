@@ -62,18 +62,21 @@ class Robot:
         else:
             self.byteCoins = coins
 
-    def setX(self, currentMap, newX):
+    def setX(self, currentMap, newX, enter=False):
         if newX < 0:
             self.x = 0
-            currentMap.setVisited(self.getX(), self.getY())
+            if not enter:
+                currentMap.setVisited(self.getX(), self.getY())
             raise BadInputException("Small x value given")  
         elif newX == currentMap.getWidth():
             self.x = currentMap.getWidth() - 1
-            currentMap.setVisited(self.getX(), self.getY())
+            if not enter:
+                currentMap.setVisited(self.getX(), self.getY())
             raise BadInputException("Large x value given")
         else:
             self.x = newX
-            currentMap.setVisited(self.getX(), self.getY())
+            if not enter:
+                currentMap.setVisited(self.getX(), self.getY())
             currentMap.checkAndDoRandomScenario(self)
 
 

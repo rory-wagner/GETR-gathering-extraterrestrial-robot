@@ -176,7 +176,7 @@ def mainLoop(GETR, personalShip, currentSector):
                     currentSector.generateMap(currentSector.planet)
                 elif possibleSector == "Exit":
                     GETR.setOnPlanet(True)
-                    GETR.setX(currentSector, 5)
+                    GETR.setX(currentSector, 5, enter=True)
                     GETR.setY(currentSector, 5)
                     currentSector.setVisited(5, 5)
                 else:
