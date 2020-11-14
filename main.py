@@ -2,7 +2,9 @@ import robot
 import tutorial
 import jsonHandler
 import string
-import gridMap
+# import gridMap
+import ship
+import sector
 import inputConsole
 
 def getValidActionFromUser(GETR, placeToCheckValidity):
@@ -82,21 +84,24 @@ def enterTutorial():
 def main():
     GETR = robot.Robot()
     personalShip = ship.Ship()
-    currentSector = sector.Sector()
+    #width, height, and planet
+    currentSector = sector.Sector(11, 11, "Earth")
 
     # print a beginning to the tutorial
-    enterTutorial(GETR, personalShip, currentSector)
+    # enterTutorial(GETR, personalShip, currentSector)
 
     #print a beginning to the real game
     mainLoop(GETR, personalShip, currentSector)
     return
 
+main()
+
 #testing for now:
 
-def test():
-    GETR = robot.Robot()
-    ourMap = gridMap.GridMap(10, 10)
-    mainLoop(GETR, ourMap, ourMap)
-    return
+# def test():
+#     GETR = robot.Robot()
+#     ourMap = gridMap.GridMap(10, 10)
+#     mainLoop(GETR, ourMap, ourMap)
+#     return
 
-test()
+# test()

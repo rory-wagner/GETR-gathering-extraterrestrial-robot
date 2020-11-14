@@ -95,15 +95,9 @@ class Robot:
         #also check if given bad item
         self.inventory[item] = itemNum
 
-
-#the organization of data in the items.json is:
-# {
-#     materialKeyName: value *int*,
-#     ...
-# }
     def fillInventory(self):
-        allItemsAndWorth = jsonHandler.getDataFromFile("items.json")
+        allItemsAndWorth = jsonHandler.getDataFromFile("mapData.json")
         ourNewInventory = {}
-        for key in allItemsAndWorth:
-            ourNewInventory[key] = 0
+        for i in allItemsAndWorth["materialIndexes"]:
+            ourNewInventory[allItemsAndWorth["ids"][i]["name"]] = 0
         return ourNewInventory

@@ -13,7 +13,7 @@ def makeValidList(allPlanets):
         finalList.append(i)
     return finalList
 
-def getUserInput():
+def getUserInput(validList):
     while True:
         userInput = inputConsole.getInput()
         try:
@@ -24,6 +24,9 @@ def getUserInput():
                 raise Exception
         except:
             print("Please use a valid integer for location")
+
+def openShop(GETR):
+    return
 
 
 #callback Functions:
@@ -71,10 +74,10 @@ class Ship(gridMap.GridMap):
         self.cargo[itemString] = value
 
     def createCargo(self):
-        allItemsAndWorth = jsonHandler.getDataFromFile("items.json")
+        allItemsAndWorth = jsonHandler.getDataFromFile("mapData.json")
         ourNewInventory = {}
-        for key in allItemsAndWorth:
-            ourNewInventory[key] = 0
+        for i in allItemsAndWorth["materialIndexes"]:
+            ourNewInventory[allItemsAndWorth["ids"][i]["name"]] = 0
         return ourNewInventory
 
     def generate(self):
@@ -90,17 +93,17 @@ class Ship(gridMap.GridMap):
         for x, y, roomID in self.rooms:
             if GETR.getX() == x and GETR.getY() == y:
                 if roomID == 2:
-                    self.ControlSeatInteract(GETR)
+                    return self.ControlSeatInteract(GETR)
                 elif roomID == 3:
-                    self.GeneratorInteract(GETR)
+                    return self.GeneratorInteract(GETR)
                 elif roomID == 4:
-                    self.PropellantTankInteract(GETR)
+                    return self.PropellantTankInteract(GETR)
                 elif roomID == 5:
-                    self.CargoInteract(GETR)
+                    return self.CargoInteract(GETR)
                 elif roomID == 14:
-                    self.ExitInteract(GETR)
+                    return self.ExitInteract(GETR)
                 elif roomID == 15:
-                    self.EngineInteract(GETR)
+                    return self.EngineInteract(GETR)
 
     def ControlSeatInteract(self, GETR):
         #select new planet and tell main to call
@@ -112,6 +115,8 @@ class Ship(gridMap.GridMap):
 
         userInput = getUserInput(validList)
         userSelectedPlace = allPlanets["allLocations"][userInput]
+        if userSelectedPlace == allPlanets["allLocations"].index("Shop")
+            openShop(GETR)
         return userSelectedPlace
 
     def GeneratorInteract(self, GETR):
@@ -128,6 +133,7 @@ class Ship(gridMap.GridMap):
         return
 
     def ExitInteract(self, GETR):
+        print("Exiting ship")
         return "Exit"
 
     def EngineInteract(self, GETR):
