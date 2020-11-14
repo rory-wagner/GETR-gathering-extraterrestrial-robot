@@ -36,6 +36,10 @@ def moveRight(GETR, currentMap):
 def interact(GETR, currentMap):
     #gives back a call-back function
     userOption = currentMap.interact(GETR)
+    if userOption == "Exit":
+        GETR.setOnPlanet(True)
+    else:
+        return userOption
 
 def doAction(GETR, currentMap, action):
     print("doing Action")
@@ -48,7 +52,7 @@ def doAction(GETR, currentMap, action):
     }
     for a in allActions:
         if a == action:
-            allActions[a](GETR, currentMap)
+            return allActions[a](GETR, currentMap)
 
 
 def mainLoop(GETR, personalShip, currentSector):
@@ -60,7 +64,9 @@ def mainLoop(GETR, personalShip, currentSector):
             doAction(GETR, currentSector, selectedAction)
         else:
             selectedAction = getValidActionFromUser(GETR, personalShip)
-            doAction(GETR, personalShip, selectedAction)
+            possibleSector = doAction(GETR, personalShip, selectedAction)
+            if possibleSector != None:
+                #here we will change sector
 
     return
 
