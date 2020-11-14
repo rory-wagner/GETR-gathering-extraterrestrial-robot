@@ -15,7 +15,7 @@ class Sector(gridMap.GridMap):
         concentrations = data["locationList"][planet]["concentration"]
         for i in range(self.width):
             for j in range(self.height):
-                if (i != 5 and j != 5):
+                if (i != 5 or j != 5):
                     concentrationList = []
                     concentrationKeys = []
                     for key in concentrations:
@@ -58,5 +58,7 @@ class Sector(gridMap.GridMap):
         x = GETR.getX()
         y = GETR.getY()
         if self.getCellID(x, y) == 0:
+            print(x)
+            print(y)
             if random.randrange(0,100) < 100:
                 scenariosHandler.performRandomScenario(GETR, self)
