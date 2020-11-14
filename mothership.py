@@ -48,18 +48,22 @@ def printMothershipOptions():
 
 def printSuccessfulPay():
 
+    exit(0)
     return
 
 def printFailurePay():
 
+    exit(1)
     return
 
 def printSuccessfulRebel():
 
+    exit(0)
     return
 
 def printFailureRebel():
 
+    exit(1)
     return
 
 def payForFreedom(GETR):
