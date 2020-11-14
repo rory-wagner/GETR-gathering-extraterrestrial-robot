@@ -1,0 +1,42 @@
+[
+    {
+        "textToUser": "Please bring usss... 7 Gold.",
+        "material": "Gold",
+        "count": 7
+    },
+    {
+        "textToUser": "Hmm... bring us 10 Titanium for our warriors.",
+        "material": "Titanium",
+        "count": 10
+    },
+    {
+        "textToUser": "Bring usss... 20 Carbon for our farms.",
+        "material": "Carbon",
+        "count": 20
+    },
+    {
+        "textToUser": "Bring back 10 Silver for our computer parts.",
+        "material": "Silver",
+        "count": 10
+    },
+    {
+        "textToUser": "For our drinks, bring us 30 Ice.",
+        "material": "Ice",
+        "count": 30
+    },
+    {
+        "textToUser": "Please bring usss... 15 Iron.",
+        "material": "Iron",
+        "count": 15
+    },
+    {
+        "textToUser": "16 Batteries for our Mothership.",
+        "material": "Battery",
+        "count": 16
+    },
+    {
+        "textToUser": "Bring usss... 12 Portable Tanks.",
+        "material": "Portable Tank",
+        "count": 12
+    }
+]
